@@ -1,70 +1,91 @@
 % !TEX root = ../my-thesis.tex
 %
 % ------------------------------------  --> cover title page
-\begin{titlepage}
-	\pdfbookmark[0]{Cover}{Cover}
-	\flushright
-	\hfill
-	\vfill
-	\vbox to0pt{\vbox to\textheight{\vfill \includegraphics[width=11.5cm]{resources/unipd-light} \vfill}\vss}
-	{\LARGE\thesisTitle \par}
-	\rule[5pt]{\textwidth}{.4pt} \par
-	{\Large\thesisName}
-	\vfill
-	\textit{\large\thesisDate} \\
-	Version: \thesisVersion
-\end{titlepage}
+% \begin{titlepage}
+% 	\pdfbookmark[0]{Cover}{Cover}
+% 	\flushright
+% 	\hfill
+% 	\vfill
+% 	\vbox to0pt{\vbox to\textheight{\vfill \includegraphics[width=11.5cm]{resources/unipd-light} \vfill}\vss}
+% 	{\LARGE\thesisTitle \par}
+% 	\rule[5pt]{\textwidth}{.4pt} \par
+% 	{\Large\thesisName}
+% 	\vfill
+% 	\textit{\large\thesisDate} \\
+% 	Version: \thesisVersion
+% \end{titlepage}
 
 
 % ------------------------------------  --> main title page
 \begin{titlepage}
 	\pdfbookmark[0]{Titlepage}{Titlepage}
-	\tgherosfont
-	\centering
+	% \tgherosfont
+	\centering	
+	
+	\includegraphics[width=0.5\textwidth]{resources/unipd-800} \\[2mm]
+	\vbox to0pt{\vbox to\textheight{\vfill \includegraphics[width=13cm]{resources/unipd-light} \vfill}\vss}
+	
+	\scshape{\huge{{\thesisUniversity}}} \\
+	\line(1, 0){400} \\[2mm]
 
-	{\Large \thesisUniversity} \\[4mm]
-	\includegraphics[width=6cm]{gfx/Clean-Thesis-Logo} \\[2mm]
+
 	\textsf{\thesisUniversityDepartment} \\
-	\textsf{\thesisUniversityInstitute} \\
+	% \textsf{\thesisUniversityInstitute} \\
 	\textsf{\thesisUniversityGroup} \\
 
 	\vfill
-	{\large \thesisSubject} \\[5mm]
+	% {\large \thesisSubject} \\[5mm]
 	{\LARGE \color{ctcolortitle}\textbf{\thesisTitle} \\[10mm]}
-	{\Large \thesisName} \\
+
+
+	\begin{center}
 
 	\vfill
-	\begin{minipage}[t]{.27\textwidth}
-		\raggedleft
-		\textit{1. Reviewer}
-	\end{minipage}
-	\hspace*{15pt}
-	\begin{minipage}[t]{.65\textwidth}
-		{\Large \thesisFirstReviewer} \\
-	  	{\small \thesisFirstReviewerDepartment} \\[-1mm]
-		{\small \thesisFirstReviewerUniversity}
-	\end{minipage} \\[5mm]
-	\begin{minipage}[t]{.27\textwidth}
-		\raggedleft
-		\textit{2. Reviewer}
-	\end{minipage}
-	\hspace*{15pt}
-	\begin{minipage}[t]{.65\textwidth}
-		{\Large \thesisSecondReviewer} \\
-	  	{\small \thesisSecondReviewerDepartment} \\[-1mm]
-		{\small \thesisSecondReviewerUniversity}
-	\end{minipage} \\[10mm]
-	\begin{minipage}[t]{.27\textwidth}
-		\raggedleft
-		\textit{Supervisors}
-	\end{minipage}
-	\hspace*{15pt}
-	\begin{minipage}[t]{.65\textwidth}
-		\thesisFirstSupervisor\ and \thesisSecondSupervisor
-	\end{minipage} \\[10mm]
+	\begin{normalsize}
+	\begin{flushleft}	  
+	  \textit{Supervisors:} \hfill \textit{Master Candidate:}\\
+		\vspace{1pt}
 
-	\thesisDate \\
+		%* names here
+		\thesisFirstSupervisor \hfill {\Large \thesisName} \\
+		\thesisSecondSupervisor
 
+		\vspace{30pt}
+		\centering
+		% \large{\textit{Academic Year} \\ 2023}
+		Summer 2023
+		% \thesisDate \\
+
+	\end{flushleft}
+	\end{normalsize}
+	
+	\end{center}
+	\vspace*{\fill}
+	\singlespacing
+	\cleardoublepage
+
+
+	\vfill
+	% \begin{minipage}[t]{.27\textwidth}
+	% 	\raggedleft
+	% 	\textit{1. Reviewer}
+	% \end{minipage}
+	% \hspace*{15pt}
+	% \begin{minipage}[t]{.65\textwidth}
+	% 	{\Large \thesisFirstReviewer} \\
+	%   	{\small \thesisFirstReviewerDepartment} \\[-1mm]
+	% 	{\small \thesisFirstReviewerUniversity}
+	% \end{minipage} \\[5mm]
+	% \begin{minipage}[t]{.27\textwidth}
+	% 	\raggedleft
+	% 	\textit{2. Reviewer}
+	% \end{minipage}
+	% \hspace*{15pt}
+	% \begin{minipage}[t]{.65\textwidth}
+	% 	{\Large \thesisSecondReviewer} \\
+	%   	{\small \thesisSecondReviewerDepartment} \\[-1mm]
+	% 	{\small \thesisSecondReviewerUniversity}
+	% \end{minipage} \\[10mm]
 \end{titlepage}
 
 
@@ -76,12 +97,13 @@
 	\textbf{\thesisName} \\
 	\textit{\thesisTitle} \\
 	\thesisSubject, \thesisDate \\
-	Reviewers: \thesisFirstReviewer\ and \thesisSecondReviewer \\
+	% Reviewers: \thesisFirstReviewer\ and \thesisSecondReviewer \\
 	Supervisors: \thesisFirstSupervisor\ and \thesisSecondSupervisor \\[1.5em]
 	\textbf{\thesisUniversity} \\
 	\textit{\thesisUniversityGroup} \\
-	\thesisUniversityInstitute \\
+	% \thesisUniversityInstitute \\
 	\thesisUniversityDepartment \\
-	\thesisUniversityStreetAddress \\
-	\thesisUniversityPostalCode\ and \thesisUniversityCity
+	% \thesisUniversityStreetAddress \\
+	% \thesisUniversityPostalCode\ and 
+	\thesisUniversityCity
 }
