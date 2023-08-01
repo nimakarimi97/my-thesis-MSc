@@ -16,5 +16,5 @@
 example-thesis/cleanthesis.sty
 dist
 
-env
+project/env
 .env
