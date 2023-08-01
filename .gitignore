@@ -15,3 +15,6 @@
 *.lol
 example-thesis/cleanthesis.sty
 dist
+
+env
+.env
