@@ -26,7 +26,7 @@ def add_lift_counter(df):
         if df['elevation_diff'][i] > 100:
             counter += 1
             # print(i)
-        df['counter'][i] = counter
+        df.loc[i, 'counter'] = counter
 
     # print(df['elevation'][i])
     return counter
