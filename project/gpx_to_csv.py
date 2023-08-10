@@ -29,6 +29,7 @@ def add_lift_counter(df):
         df['counter'][i] = counter
 
     # print(df['elevation'][i])
+    return counter
 
 
 def gpx_to_csv(gpx_file_path, csv_file_path):
@@ -71,7 +72,12 @@ def gpx_to_csv(gpx_file_path, csv_file_path):
     route_df['cum_elevation'] = route_df['elevation_diff'].cumsum()
     route_df['cum_distance'] = route_df['distance'].cumsum()/1e3
 
-    add_lift_counter(route_df)
+    counter = add_lift_counter(route_df)
+    if counter > 0:
+        print('------------------------------------------------------------------')
+        print(
+            f"The number of lifts detected on {csv_file_path[11:]} is {counter} ")
+        print('------------------------------------------------------------------')
 
     route_df = route_df.fillna(0)  # replace NANs with zero
     ######
