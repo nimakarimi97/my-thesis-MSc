@@ -18,3 +18,6 @@ dist
 
 venv
 .env
+
+project/data/csv
+project/data/gpx

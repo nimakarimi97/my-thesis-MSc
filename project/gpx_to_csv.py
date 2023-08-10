@@ -7,6 +7,8 @@ import os
 import gpxpy
 import pandas as pd
 
+report = []
+
 
 def haversine_distance(lat1, lon1, lat2, lon2) -> float:
     distance = hs.haversine(
@@ -74,6 +76,10 @@ def gpx_to_csv(gpx_file_path, csv_file_path):
 
     counter = add_lift_counter(route_df)
     if counter > 0:
+        report.append({
+            'file': csv_file_path[11:],
+            'n': counter,
+        })
         print('------------------------------------------------------------------')
         print(
             f"The number of lifts detected on {csv_file_path[11:]} is {counter} ")
@@ -98,3 +104,7 @@ def convert_all_gpx_to_csv(gpx_dir, csv_dir):
 gpx_dir = './data/gpx/'
 csv_dir = './data/csv/'
 convert_all_gpx_to_csv(gpx_dir, csv_dir)
+
+
+report_df = pd.DataFrame(report)
+report_df.to_csv('./data/report.csv', index=True)
