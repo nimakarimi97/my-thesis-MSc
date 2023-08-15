@@ -21,3 +21,4 @@ venv
 
 project/data/csv
 project/data/gpx
+project/__pycache__

@@ -106,5 +106,5 @@ csv_dir = './data/csv/'
 convert_all_gpx_to_csv(gpx_dir, csv_dir)
 
 
-report_df = pd.DataFrame(report)
-report_df.to_csv('./data/report.csv', index=True)
+# report_df = pd.DataFrame(report)
+# report_df.to_csv('./data/report.csv', index=True)
