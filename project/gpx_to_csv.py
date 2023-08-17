@@ -23,14 +23,14 @@ def add_lift_counter(df):
     counter = 0
     df['counter'] = 0  # ? set the counter column to zero
     for i in range(len(df)):
-        # if df['elevation_diff'][i] < 1:
+        # if df['altitude_diff'][i] < 1:
         #     continue
-        if df['elevation_diff'][i] > 100:
+        if df['altitude_diff'][i] > 100:
             counter += 1
             # print(i)
         df.loc[i, 'counter'] = counter
 
-    # print(df['elevation'][i])
+    # print(df['altitude'][i])
     return counter
 
 
@@ -46,12 +46,12 @@ def gpx_to_csv(gpx_file_path, csv_file_path):
                     'time': point.time,
                     'latitude': point.latitude,
                     'longitude': point.longitude,
-                    'elevation': point.elevation
+                    'altitude': point.elevation
                 })
 
     route_df = pd.DataFrame(route_info)
 
-    route_df['elevation_diff'] = route_df['elevation'].diff()
+    route_df['altitude_diff'] = route_df['altitude'].diff()
 
     distances = [np.nan]
     speed = [np.nan]
@@ -71,7 +71,7 @@ def gpx_to_csv(gpx_file_path, csv_file_path):
     route_df['distance'] = distances
     route_df['speed'] = speed
 
-    route_df['cum_elevation'] = route_df['elevation_diff'].cumsum()
+    route_df['relative_elevation'] = route_df['altitude_diff'].cumsum()
     route_df['cum_distance'] = route_df['distance'].cumsum()/1e3
 
     counter = add_lift_counter(route_df)
