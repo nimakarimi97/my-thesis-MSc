@@ -19,19 +19,15 @@ def haversine_distance(lat1, lon1, lat2, lon2) -> float:
     return np.round(distance, 2)
 
 
-def add_lift_counter(df):
-    counter = 0
-    df['counter'] = 0  # ? set the counter column to zero
+def lift_checker(df):
+    number_of_lifts = 0
+    df['lift?'] = 0  # ? set the "lift?" column to zero
     for i in range(len(df)):
-        # if df['altitude_diff'][i] < 1:
-        #     continue
         if df['altitude_diff'][i] > 100:
-            counter += 1
-            # print(i)
-        df.loc[i, 'counter'] = counter
+            number_of_lifts += 1
+            df.loc[i-1:i, 'lift?'] = 1
 
-    # print(df['altitude'][i])
-    return counter
+    return number_of_lifts
 
 
 def gpx_to_csv(gpx_file_path, csv_file_path):
@@ -52,6 +48,7 @@ def gpx_to_csv(gpx_file_path, csv_file_path):
     route_df = pd.DataFrame(route_info)
 
     route_df['altitude_diff'] = route_df['altitude'].diff()
+    route_df['relative_elevation'] = route_df['altitude_diff'].cumsum()
 
     distances = [np.nan]
     speed = [np.nan]
@@ -69,25 +66,23 @@ def gpx_to_csv(gpx_file_path, csv_file_path):
         speed.append(distances[i]/time_diff)
 
     route_df['distance'] = distances
+    route_df['cum_distance'] = route_df['distance'].cumsum()/1e3
     route_df['speed'] = speed
 
-    route_df['relative_elevation'] = route_df['altitude_diff'].cumsum()
-    route_df['cum_distance'] = route_df['distance'].cumsum()/1e3
-
-    counter = add_lift_counter(route_df)
-    if counter > 0:
+    number_of_lifts = lift_checker(route_df)
+    if number_of_lifts > 0:
         report.append({
             'file': csv_file_path[11:],
-            'n': counter,
+            'n': number_of_lifts,
         })
         print('------------------------------------------------------------------')
         print(
-            f"The number of lifts detected on {csv_file_path[11:]} is {counter} ")
+            f"The number of lifts detected on {csv_file_path[11:]} is {number_of_lifts} ")
         print('------------------------------------------------------------------')
 
     route_df = route_df.fillna(0)  # replace NANs with zero
     ######
-    route_df.to_csv(csv_file_path, index=False)
+    route_df.to_csv(csv_file_path, index=True)
     return route_df
 
 
