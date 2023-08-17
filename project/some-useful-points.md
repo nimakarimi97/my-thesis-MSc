@@ -1,7 +1,9 @@
-### Activate the virtual environment
+# Instructions for usign the code
 
-```
-source .venv/bin/activate
+## Activate the virtual environment
+
+```bash
+conda activate <ENV_NAME>
 ```
 
 Classification Performance
@@ -12,13 +14,13 @@ True positives: correctly predicted positives (ones)
 False negatives: incorrectly predicted negatives (zeros)
 False positives: incorrectly predicted positives (ones)
 
-### Next step 28 July
+---
+
+## 28 July
 
 - CLassification of having the transportation?
 
 - finding the point of interests (where speed = 0)
-
----
 
 fix the speed
 
@@ -41,3 +43,17 @@ about 10 slides
 2. a couple for data
 3. a couple for ML algorithm
 4. results and conclusion
+
+---
+
+## 15 August
+
+elevation should start from 0.
+
+1. use a boolean variable for wether a lift is used or not (for the entire path)
+
+2. verify the lift
+
+3. use the speed and distance for x (cum distance, speed and the elevation_diff)
+   use that boolean variable as y
+   summarize the path parameters
