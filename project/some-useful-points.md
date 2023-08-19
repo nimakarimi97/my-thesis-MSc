@@ -1,10 +1,4 @@
-# Instructions for usign the code
-
-## Activate the virtual environment
-
-```bash
-conda activate <ENV_NAME>
-```
+# Some useful points and meetings' notes
 
 Classification Performance
 Binary classification has four possible types of results:
@@ -37,7 +31,7 @@ fix the speed
 
 5. compare the different algorithms (SVM, multi logistic regression ...)
 
-about 10 slides
+The presentation should be more or less 10 slides:
 
 1. lit review
 2. a couple for data
@@ -48,12 +42,12 @@ about 10 slides
 
 ## 15 August
 
-elevation should start from 0.
+0. ~~Elevation should start from 0.~~
 
-1. use a boolean variable for wether a lift is used or not (for the entire path)
+1. ~~Use a boolean variable for wether a lift is used or not (for the entire path)~~
 
-2. verify the lift
+2. Verify the lift
 
-3. use the speed and distance for x (cum distance, speed and the elevation_diff)
+3. Use the speed and distance for x (cum distance, speed and the elevation_diff).
    use that boolean variable as y
-   summarize the path parameters
+4. Summarize the path parameters

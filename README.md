@@ -36,6 +36,18 @@ The code was developed with Python 3.11 and requires the following packages:
 - Matplotlib
 - gpxpy
 
+### Create the environment from the environment.yml file
+
+```bash
+conda env create -f environment.yml
+```
+
+### Activate the virtual environment
+
+```bash
+conda activate <ENV_NAME>
+```
+
 ## Results
 
 The key results of my project can be found in Chapter 4 of my thesis.
