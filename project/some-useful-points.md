@@ -48,6 +48,6 @@ The presentation should be more or less 10 slides:
 
 2. Verify the lift
 
-3. Use the speed and distance for x (cum distance, speed and the elevation_diff).
+3. Use the speed and distance for x (distance, speed and the altitude_diff).
    use that boolean variable as y
 4. Summarize the path parameters
