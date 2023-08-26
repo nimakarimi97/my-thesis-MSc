@@ -84,3 +84,45 @@
 % Other Packages
 % **************************************************
 \usepackage{scrhack}
+
+
+
+% **************************************************
+% Listing Format
+% **************************************************
+
+\RequirePackage{listings}			% package for listings
+% \lstset{%
+%     backgroundcolor=\color{ctcolorgraylighter},
+%     linewidth=\textwidth,
+%     xleftmargin=10pt,
+%     captionpos=b,
+%     showspaces=false,
+%     showstringspaces=false,
+%     showtabs=false,
+%     tabsize=2,
+%     basicstyle=\footnotesize\ttfamily,
+%     frame=leftline,
+%     framerule=3pt,
+%     framexleftmargin=4pt,
+%     rulecolor=\color{ctcolorgraylight},
+%     numbers=left,
+%     numberstyle=\footnotesize\sffamily\color{ctcolorgray},
+%     numbersep=15pt
+% }
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{teal},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    rulecolor=\color{ctcolorgraylight},
+    frame=single,
+    framerule=3pt,
+    breaklines=true
+    linewidth=\textwidth,
+    captionpos=b,
+}
+
