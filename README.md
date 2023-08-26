@@ -1,60 +1,63 @@
-# Clean Thesis
-*-- A Clean LaTeX Style for Thesis Documents --*
+# My Master's Thesis
 
-## Table of contents
+> A Clean LaTeX Style for Thesis Documents
 
-* [About](#about)
-* [Getting started](#getting-started)
-* [Documentation and Support](#documentation-and-support)
-* [Contributing](#contributing)
-* [License Information](#license-information)
+This repository contains my master's thesis titled "Sustaibale Mobility" along with the code and scripts used in my research project.
 
-## About
+## Thesis
 
-**Clean, Simple, Elegant**
-*Clean Thesis* is a LaTeX style for thesis documents, developed for my diploma thesis (Diplomarbeit). The style can be understood as my personal compromise — a typical clean looking scientific document combined and polished with minor beautifications.
+The LaTeX source files for my thesis are located in the `thesis` directory. The main file is `my-thesis.tex`.
 
-The design of this *Clean Thesis* style is inspired by user guide documents from Apple Inc.
+## Project
 
-Note: If you are looking for an exact and correct style regarding typographic rules, please have a look at the "[Classic Thesis Style](see http://www.miede.de/#classicthesis)".
+The Python code and Jupyter notebooks for my machine learning project are located in the `project` directory.
 
-**Donation = Postcard**
-Based on the idea of André Miede: If you like the *Clean Thesis* style I would be very pleased about a donation in the form of a POSTCARD. You can find my address at the *Clean Thesis* [website](http://cleanthesis.der-ric.de/) as well as in the [documentation](doc/cleanthesis-doc.pdf). I am going to collect all postcards and exhibit them at the website I mentioned.
+The main scripts are:
 
-**Idea and Inspiration**
-The idea of providing my customized style for thesis documents passed through my mind while writing my own thesis. Motivated and inspired by the superb "[Classic Thesis Style](http://www.miede.de/#classicthesis)" by André Miede (thanks to André for doing a great job) I decided to collect all design and style related functionality in a separate LaTeX style and provide this style to other thesis writers.
+- `gpx_to_csv.py` - Script for loading, cleaning, and preprocessing the dataset and converting it into a CSV file
+- `Implement_ML.ipynb` - Defines and trains the machine learning model
 
-## Getting started
+<!-- The `data` directory contains the raw and processed datasets used for this project. -->
 
-* Make sure you have an up-to-date TeX distribution
-* Download the example-thesis from the [releases page](https://github.com/derric/cleanthesis/releases) (file `cleanthesis-incl-example_v****.zip`)
-* [Check out the documentation](doc/cleanthesis-doc.pdf) to learn more about *Clean Thesis* and available package options
+## Usage
 
-## Documentation and Support
+The Python scripts expect the data to be located in the `data` folder. To run the full pipeline:
 
-The [documentation](doc/cleanthesis-doc.pdf) gives an overview of available package options.
+1. Process data: `python gpx_to_csv.py`
+2. Run the model: `python Implement_ML.ipynb`
 
-Please use [Stack Exchange](http://tex.stackexchange.com/questions/tagged/cleanthesis) for questions about **using** *Clean Thesis*; and add the tag **cleanthesis** to your question. GitHub issues are for development purposes, e.g, reporting actual bugs or requesting new features.
+## Requirements
 
-## Contributing
+The code was developed with Python 3.11 and requires the following packages:
 
-Did you find an error or a bug? Do you have a feature request? Before opening a [new issue](https://github.com/derric/cleanthesis/issues/new), please check out the list of [existing](https://github.com/derric/cleanthesis/issues) and [closed](https://github.com/derric/cleanthesis/issues?q=is%3Aissue+is%3Aclosed) issues.
+- NumPy
+- Pandas
+- Scikit-Learn
+- Matplotlib
+- gpxpy
 
-## License Information
+### Create the environment from the environment.yml file
 
-README.md
-Copyright 2020 R. Langner
+```bash
+conda env create -f environment.yml
+```
 
-This work may be distributed and/or modified under the
-conditions of the LaTeX Project Public License, either version 1.3
-of this license or (at your option) any later version.
-The latest version of this license is in
-  http://www.latex-project.org/lppl.txt
-and version 1.3 or later is part of all distributions of LaTeX
-version 2005/12/01 or later.
+### Activate the virtual environment
 
-This work has the LPPL maintenance status `maintained'.
+```bash
+conda activate <ENV_NAME>
+```
 
-The Current Maintainer of this work is R. Langner.
+## Results
 
-This work consists of all files listed in MANIFEST.md.
+The key results of my project can be found in Chapter 4 of my thesis.
+
+## References
+
+See the Bibliography section in my thesis for a full list of references.
+
+## How to Contribute
+
+Contributions are welcome! If you'd like to contribute to this repository, please fork it, make your changes, and submit a pull request.
+
+Here is a draft README.md file for your master's thesis GitHub repository:

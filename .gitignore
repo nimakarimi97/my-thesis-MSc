@@ -15,3 +15,12 @@
 *.lol
 example-thesis/cleanthesis.sty
 dist
+
+venv
+.env
+
+project/data/csv
+project/data/gpx
+project/data/csv_train
+project/data/gpx_train
+project/__pycache__
