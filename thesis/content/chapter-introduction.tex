@@ -17,59 +17,60 @@ Environmental sustainability is another critical dimension of sustainable mobili
 In summary, the combination of machine learning and sustainable mobility presents a promising framework to address the complex challenges faced by transportation systems. By harnessing the power of machine learning algorithms, transportation stakeholders can optimize operations, improve accessibility, and mitigate environmental impact. As the demand for sustainable and efficient mobility solutions continues to grow, machine learning can provide valuable insights and tools to shape the future of transportation, leading to more sustainable, accessible, and environmentally friendly mobility systems.
 
 
-
-
-\section{Motivation and Problem Statement}
+\section{Machine Learning}
 \label{sec:intro:motivation}
 
-\Blindtext[3][1] \cite{Jurgens:2000,Jurgens:1995,Miede:2011,Kohm:2011,Apple:keynote:2010,Apple:numbers:2010,Apple:pages:2010}
+Can computers learn like humans do from experience? Yes, through machine learning (ML).
+It enhances system performance by using computational methods to learn 
+from experience, mainly in the form of data. The key task in machine learning is developing
+algorithms that build models from data. By inputting experience data into these algorithms,
+we obtain models capable of predicting outcomes for new observations. In the context of
+computer science, machine learning focuses on learning algorithms~\cite{zhou2021machine}.
 
-\section{Results}
-\label{sec:intro:results}
 
-\Blindtext[1][2]
+~\cite{mitchell1997machine} provides a more formal definition: 
+``A computer program is said to learn from experience E for some class of tasks T and performance measure P, 
+if its performance at tasks in T, as measured by P, improves with experience E.``
+The term "model" is broadly used to denote outcomes learned from data. In some literature 
+(e.g.~\cite{hand2001principles}), "model" might mean a global outcome, while "pattern" signifies a local outcome.
 
-\subsection{Some References}
-\label{sec:intro:results:refs}
+The procedure of constructing models from data using machine learning algorithms is referred to as learning or training. The data employed during this phase is known as training data, where each sample serves as a training example, and the complete collection of training examples is the training set. The model derived from this process, representing the underlying data rules, is also termed a hypothesis, while the actual underlying rules are considered as facts or ground-truth. Thus, the fundamental goal of machine learning is to identify or approximate the ground-truth rules ~\cite{zhou2021machine}.
 
-\cite{WEB:GNU:GPL:2010,WEB:Miede:2011}
-\Blindtext[1][1]
+A wide range of machine-learning algorithms has been developed to address the diverse data and problem types in various machine-learning scenarios ~\cite{hastie2009elements, murphy2012machine}. These algorithms can be understood as exploring a vast space of potential programs, guided by training experience, to discover the most optimal performance. Variation among these algorithms arises from their methods of representing candidate programs, such as decision trees or mathematical functions, and their strategies for navigating this program space, including optimization techniques and evolutionary search methods~\cite{jordan2015machine}.
 
-\subsubsection{Methodology}
-\label{sec:intro:results:refs:method}
+\subsection{Different Machine Learning algorithms}
+Machine learning encompasses a wide range of learning types and algorithms. The major categories are supervised learning, unsupervised learning, semi-supervised learning, and reinforcement learning \cite{Alpaydin14}.
 
-\Blindtext[1][2]
+Supervised learning algorithms are trained on labeled data, which includes inputs and desired outputs. Common supervised tasks are classification, predicting categorical outputs like spam or not spam, and regression, predicting continuous values like price. Algorithms learn a mapping from inputs to outputs by examining many examples. Supervised learning can achieve high predictive accuracy but relies on large labeled training sets which can be costly to obtain. Popular supervised algorithms include logistic regression, support vector machines, neural networks, decision trees, and random forests.
 
-\paragraph{Strategy 1}
-\Blindtext[1][1]
+In contrast, unsupervised learning operates on unlabeled data, finding hidden patterns and intrinsic structure within it. Clustering algorithms are a key example, grouping data points that are similar. Other unsupervised techniques like dimensionality reduction and association rule mining also derive insights from the data itself without external labeling. As labeling is not required, unsupervised methods can more easily scale to new problem domains, but the models may not have clear accuracy measures.
 
-\begin{lstlisting}[language=Python, caption={This simple helloworld.py file prints Hello World.}\label{lst:pyhelloworld}]
-#!/usr/bin/env python
-print "Hello World"
-\end{lstlisting}
+In summary, machine learning employs various approaches to train models that can analyze data, recognize patterns, make predictions, or perform tasks. Supervised learning offers predictive accuracy but requires labeled data. Unsupervised learning can find hidden insights in any data without labeling but has less defined performance measures. Together these technologies enable machine learning systems to perform tasks not explicitly programmed.
 
-\paragraph{Strategy 2}
-\Blindtext[1][1]
 
-\begin{lstlisting}[language=Python, caption={This is a bubble sort function.}\label{lst:pybubblesort}]
-#!/usr/bin/env python
-def bubble_sort(list):
-    for num in range(len(list)-1,0,-1):
-        for i in range(num):
-            if list[i]>list[i+1]:
-                tmp = list[i]
-                list[i] = list[i+1]
-                list[i+1] = tmp
 
-alist = [34,67,2,4,65,16,17,95,20,31]
-bubble_sort(list)
-print(list)
-\end{lstlisting}
+\subsection{Overfitting}
+
+In supervised machine learning, an issue called overfitting arises, leading to poor generalization from observed data to new, unseen data. This results in a model performing well on the training set but poorly on the testing set. Overfitting occurs because the model becomes too specific to the training data and struggles with variations present in the testing data. Overfitted models tend to memorize noise and details of the training set rather than learning the underlying patterns~\cite{Ying_2019}.
+
+Occam's Razor, or the principle of parsimony, advocates using models that contain only what's necessary for effective modeling. Overfitting occurs when models or procedures include more terms than needed, violating parsimony. Two types of overfitting are identified: using excessively flexible models and incorporating irrelevant components. Overfitting is undesirable due to resource wastage, potential prediction errors, worse decisions in feature selection, degraded predictions, and reduced portability of models. Portable models, adhering to Occam's Razor, are preferred for their broader applicability and reproducibility across locations~\cite{hawkins2004of,cook2016overfitting}.
+
+
+\subsection{Spliting the dataset}
+
+In both statistical and machine learning model development, a common practice is to divide the dataset into two parts: training and testing ~\cite{hastie2009elements}. The training set is utilized to estimate the model's unknown parameters, while the model's accuracy is assessed using the testing dataset. This division is essential to prevent overfitting, where a model becomes too tailored to the data, potentially leading to poor predictions in new situations. By reserving a subset of the data for testing, the model's performance can be evaluated before actual deployment, safeguarding against issues arising from overfitting.
+
+The simplest and probably the most common strategy to split such a dataset is to randomly sample a fraction of the dataset. For example, 80\% of the rows of the dataset can be randomly chosen for training, and the remaining 20\% can be used for testing. Various strategies are showcased in ~\cite{roshan2022split} for efficiently and optimally dividing the dataset.
+
+\subsection{Validation}
+Furthermore, it's a frequent practice to reserve a segment of the training set for validation. This validation subset serves purposes such as refining model performance through hyper-parameter or regularization parameter selection (e.g. the number of hidden units—layers and layer widths—in a neural network~\cite{ripley2007pattern}). Validation datasets also can be used for regularization by early stopping (stopping training when the error on the validation data set increases, as this is a sign of over-fitting to the training data set)~\cite{Prechelt2012}.
+
+To ensure greater result stability and maximize the use of valuable data for training, datasets can be repeatedly divided into multiple training and validation subsets. This practice, referred to as cross-validation, is employed. Additionally, an independent test dataset held apart from cross-validation is typically utilized to validate the model's performance.~\cite{browne2000cv} provides an overview of various cross-validation techniques.
 
 \section{Thesis Structure}
 \label{sec:intro:structure}
 
-\textbf{Chapter \ref{sec:related}} \\[0.2em]
+\textbf{Chapter \ref{sec:data}} \\[0.2em]
 \blindtext
 
 \textbf{Chapter \ref{sec:system}} \\[0.2em]
