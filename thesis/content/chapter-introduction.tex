@@ -41,7 +41,11 @@ A wide range of machine-learning algorithms has been developed to address the di
 \subsection{Different Machine Learning algorithms}
 Machine learning encompasses a wide range of learning types and algorithms. The major categories are supervised learning, unsupervised learning, semi-supervised learning, and reinforcement learning \cite{Alpaydin14}.
 
-Supervised learning algorithms are trained on labeled data, which includes inputs and desired outputs. Common supervised tasks are classification, predicting categorical outputs like spam or not spam, and regression, predicting continuous values like price. Algorithms learn a mapping from inputs to outputs by examining many examples. Supervised learning can achieve high predictive accuracy but relies on large labeled training sets which can be costly to obtain. Popular supervised algorithms include logistic regression, support vector machines, neural networks, decision trees, and random forests.
+Supervised learning algorithms are trained on labeled data, which includes inputs and desired outputs. Common supervised tasks are classification, predicting categorical outputs like spam or not spam,
+and regression, for instance predicting continuous values like price. Algorithms learn a mapping from inputs
+to outputs by examining many examples. Supervised learning can achieve high 
+predictive accuracy but relies on large labeled training sets which can be costly to obtain. 
+Popular supervised algorithms include logistic regression, support vector machines, neural networks, decision trees, and random forests.
 
 In contrast, unsupervised learning operates on unlabeled data, finding hidden patterns and intrinsic structure within it. Clustering algorithms are a key example, grouping data points that are similar. Other unsupervised techniques like dimensionality reduction and association rule mining also derive insights from the data itself without external labeling. As labeling is not required, unsupervised methods can more easily scale to new problem domains, but the models may not have clear accuracy measures.
 
@@ -65,7 +69,7 @@ The simplest and probably the most common strategy to split such a dataset is to
 \subsection{Validation}
 Furthermore, it's a frequent practice to reserve a segment of the training set for validation. This validation subset serves purposes such as refining model performance through hyper-parameter or regularization parameter selection (e.g. the number of hidden units—layers and layer widths—in a neural network~\cite{ripley2007pattern}). Validation datasets also can be used for regularization by early stopping (stopping training when the error on the validation data set increases, as this is a sign of over-fitting to the training data set)~\cite{Prechelt2012}.
 
-To ensure greater result stability and maximize the use of valuable data for training, datasets can be repeatedly divided into multiple training and validation subsets. This practice, referred to as cross-validation, is employed. Additionally, an independent test dataset held apart from cross-validation is typically utilized to validate the model's performance.~\cite{browne2000cv} provides an overview of various cross-validation techniques.
+To ensure greater result stability and maximize the use of valuable data for training, datasets can be repeatedly divided into multiple training and validation subsets. This practice, referred to as cross validation, is employed. Additionally, an independent test dataset held apart from cross-validation is typically utilized to validate the model's performance.~\cite{browne2000cv} provides an overview of various cross-validation techniques.
 
 \section{Thesis Structure}
 \label{sec:intro:structure}
