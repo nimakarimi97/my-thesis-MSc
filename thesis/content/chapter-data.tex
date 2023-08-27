@@ -7,10 +7,10 @@
 {Peter Sondergaard}{(Founder of The Sondergaard Group, LLC.)}
 
 
-This chapter discusses data analysis methodologies. Collaborating with Mowi Space, a platform tailored for mountain biking enthusiasts and winter sports enthusiasts, this collaboration has yielded a dynamic digital platform catering to outdoor sports. The MOWI website offers real-time data and interactive 3D maps for offline exploration. It delivers current trail conditions, weather updates, lift operations, and local events, ensuring informed and safe adventures. Notably, the Live Track feature allows real-time monitoring of family or friends during mountain activities, fostering connectivity and safety. This collaboration signifies a pivotal advancement in outdoor experience planning, merging technology with nature's allure.
+This chapter discusses data analysis methodologies. Collaborating with Mowi Space, a platform tailored for mountain biking enthusiasts and winter sports enthusiasts, this collaboration has yielded a dynamic digital platform catering to outdoor sports. The MOWI website offers real-time data and interactive 3D maps for offline exploration. It delivers current trail conditions, weather updates, lift operations, and local events, ensuring informed and safe adventures. Notably, the Live Track feature allows real-time monitoring of family or friends during mountain activities, fostering connectivity and safety. This collaboration signifies a pivotal advancement in outdoor experience planning, merging technology with nature"s allure.
 
-As a result of getting some user's data going through various tracks,
-it's possible to convert the GPS data into CSV files.
+As a result of getting some user"s data going through various tracks,
+it"s possible to convert the GPS data into CSV files.
 
 
 \section{Converting the GPS data}
@@ -33,6 +33,7 @@ import os
 import gpxpy
 import pandas as pd
 from tqdm import tqdm
+import json
 \end{lstlisting}
 
 These libraries are used for working with GPX files, numerical calculations, data manipulation, and progress tracking during processing.
@@ -47,7 +48,7 @@ This function converts GPX data to CSV format and calculates various metrics.
 
 \begin{lstlisting}[language=Python]
 def gpx_to_csv(gpx_file_path, csv_file_path):
-    with open(gpx_file_path, 'r') as gpx_file:
+    with open(gpx_file_path, "r") as gpx_file:
         gpx = gpxpy.parse(gpx_file)
 
     route_info = []
@@ -55,26 +56,26 @@ def gpx_to_csv(gpx_file_path, csv_file_path):
         for segment in track.segments:
             for point in segment.points:
                 route_info.append({
-                    'time': point.time,
-                    'latitude': point.latitude,
-                    'longitude': point.longitude,
-                    'altitude': point.elevation
+                    "time": point.time,
+                    "latitude": point.latitude,
+                    "longitude": point.longitude,
+                    "altitude": point.elevation
                 })
 
     route_df = pd.DataFrame(route_info)
 
-    route_df['altitude_diff'] = route_df['altitude'].diff()
-    route_df['relative_elevation'] = route_df['altitude_diff'].cumsum()
+    route_df["altitude_diff"] = route_df["altitude"].diff()
+    route_df["relative_elevation"] = route_df["altitude_diff"].cumsum()
 
     distances = [np.nan]
     speed = [np.nan]
 
     for i in range(1, len(route_df)):
         distances.append(haversine_distance(
-            lat1=route_df.iloc[i - 1]['latitude'],
-            lon1=route_df.iloc[i - 1]['longitude'],
-            lat2=route_df.iloc[i]['latitude'],
-            lon2=route_df.iloc[i]['longitude']
+            lat1=route_df.iloc[i - 1]["latitude"],
+            lon1=route_df.iloc[i - 1]["longitude"],
+            lat2=route_df.iloc[i]["latitude"],
+            lon2=route_df.iloc[i]["longitude"]
         ))
 
         # #* speed
@@ -89,20 +90,20 @@ def gpx_to_csv(gpx_file_path, csv_file_path):
 
         speed.append(speed_i)
 
-    route_df['distance'] = distances
-    route_df['cum_distance'] = route_df['distance'].cumsum()/1e3
-    route_df['speed'] = speed
+    route_df["distance"] = distances
+    route_df["cum_distance"] = route_df["distance"].cumsum()/1e3
+    route_df["speed"] = speed
 
     number_of_lifts = lift_checker(route_df)
     if number_of_lifts > 0:
         report.append({
-            'file': csv_file_path[11:],
-            'n': number_of_lifts,
-            'sum_of_n': route_df['lift_path'].sum()/2
+            "file": csv_file_path[11:],
+            "n": number_of_lifts,
+            "sum_of_n": route_df["lift_path"].sum()/2
         })
-        print('----------------------------------')
+        print("----------------------------------")
         print(f"The number of lifts detected on {csv_file_path[11:]} is {number_of_lifts}")
-        print('----------------------------------')
+        print("----------------------------------")
 
     route_df = route_df.fillna(0)  # replace NANs with zero
     ######
@@ -110,6 +111,7 @@ def gpx_to_csv(gpx_file_path, csv_file_path):
     return route_df
 \end{lstlisting}
 
+It works as follows:
 \begin{enumerate}
     \item The function first parses the input GPX file using the \textit{gpxpy} library and extracts key data like time, latitude, longitude and elevation into a Python dictionary for each point along the route.
     
@@ -148,26 +150,30 @@ def haversine_distance(lat1, lon1, lat2, lon2) -> float:
 \subsubsection{\texttt{lift\_checker}}
 
 Furthermore, an additional vital function comes into play. This function is dedicated to the identification of 
-lift occurrences in the dataset. In the event a lift is detected, this function augments the existing DataFrame of 
+lift occurrences in the dataset. After loading the dataset of the lifts, two for loop is used. 
+One iterates over the track and the other iterates over lifts. Then, lists are detected when the location of a track aligns with the location of a lift.
+In the event a lift is detected, this function augments the existing DataFrame of 
 GPS data with two supplementary columns. The first column, designated as \texttt{lift?}, 
-is equipped with boolean values to indicate the presence of a lift at specific points. 
+is equipped with boolean values (0 and 1) to indicate the presence of a lift at specific points. 
 The second column, titled \texttt{lift\_path}, serves as an indicator for lift pathways, 
 allowing for the demarcation of paths corresponding to lift usage:
 
 \begin{lstlisting}[language=Python]
 def lift_checker(df):
+    with open("lift_dataset.json", "r") as f:
+        lifts = json.load(f)
     number_of_lifts = 0
-    df['lift?'] = 0  # ? set the "lift?" column to zero
-    df['lift_path'] = 0
+    df["lift?"] = 0  # ? set the "lift?" column to zero
+    df["lift_path"] = 0
 
     for i in range(len(df)):
-        if df['altitude_diff'][i] > 100:
-            number_of_lifts += 1
-            df.loc[i, 'lift?'] = 1
-            df.loc[i-1:i, 'lift_path'] = 1
-
+        for lift in lifts:
+            lift_location = lift["geoLocation"]["coordinatesLineString"]
+            if df["latitude"][i] == lift_location[0] and df["longitude"][i] == lift_location[1]:
+                number_of_lifts += 1
+                df.loc[i, "lift?"] = 1
+                df.loc[i-1:i, "lift_path"] = 1
     return number_of_lifts
-
 \end{lstlisting}
 
 \subsubsection{\texttt{convert\_all\_gpx\_to\_csv}}
@@ -177,11 +183,11 @@ This function processes all GPX files in a directory and converts them to CSV:
 \begin{lstlisting}[language=Python]
 def convert_all_gpx_to_csv(gpx_dir, csv_dir):
     gpx_files = [filename for filename in os.listdir(
-        gpx_dir) if filename.endswith('.gpx')]
+        gpx_dir) if filename.endswith(".gpx")]
     progress_bar = tqdm(total=len(gpx_files), desc="Converting GPX files")
     for filename in gpx_files:
         gpx_file_path = os.path.join(gpx_dir, filename)
-        csv_file_path = os.path.join(csv_dir, filename.replace('.gpx', '.csv'))
+        csv_file_path = os.path.join(csv_dir, filename.replace(".gpx", ".csv"))
         gpx_to_csv(gpx_file_path, csv_file_path)
         progress_bar.update(1)
     progress_bar.close()
@@ -198,14 +204,14 @@ GPS data into a more structured and informative format, followed by the generati
 
 \begin{lstlisting}[language=Python]
 # Usage
-gpx_dir = './data/gpx_train/'
-csv_dir = './data/csv_train/'
+gpx_dir = "./data/gpx_train/"
+csv_dir = "./data/csv_train/"
 convert_all_gpx_to_csv(gpx_dir, csv_dir)
-print('Converting is finished.')
+print("Converting is finished.")
 
 # Generating a report of the tracks that have at least one lift
 report_df = pd.DataFrame(report)
-report_df.to_csv('./data/report.csv', index=True)
+report_df.to_csv("./data/report.csv", index=True)
 \end{lstlisting}
 
 
