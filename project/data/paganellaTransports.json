@@ -1,0 +1,225 @@
+{
+    "_id": {
+        "$oid": "5fc8fcf68ac947642fa270e0"
+    },
+    "geoLocation": {
+        "coordinatesLineStringText": "[[11.02356043683669,46.14786053662303],[11.036934845476305,46.14281307269988]]",
+        "coordinatesPoint": null,
+        "coordinatesLineString": [
+            [
+                11.02356043683669,
+                46.14786053662303
+            ],
+            [
+                11.036934845476305,
+                46.14281307269988
+            ]
+        ],
+        "coordinatesMultiLineString": null
+    },
+    "name": "Albi de Mez - Cima",
+    "area": {
+        "$oid": "5f9e70ce068dca5082b92efe"
+    },
+    "primaryService": "aerialway_chair_lift"
+}
+{
+    "_id": {
+        "$oid": "5fc8fe8f8ac947642fa270e2"
+    },
+    "geoLocation": {
+        "coordinatesLineStringText": "[[11.00557657546957,46.16360222459963],[11.021370891532314,46.14559686654814]]",
+        "coordinatesPoint": null,
+        "coordinatesLineString": [
+            [
+                11.00557657546957,
+                46.16360222459963
+            ],
+            [
+                11.021370891532314,
+                46.14559686654814
+            ]
+        ],
+        "coordinatesMultiLineString": null
+    },
+    "name": "Andalo - Doss Pelà",
+    "area": {
+        "$oid": "5f9e70ce068dca5082b92efe"
+    },
+    "primaryService": "aerialway_gondola"
+}
+{
+    "_id": {
+        "$oid": "5fc8fff48ac947642fa270e3"
+    },
+    "geoLocation": {
+        "coordinatesLineStringText": "[[11.001431429873977,46.15942456216051],[10.996557919569842,46.15011023631378]]",
+        "coordinatesPoint": null,
+        "coordinatesLineString": [
+            [
+                11.001431429873977,
+                46.15942456216051
+            ],
+            [
+                10.996557919569842,
+                46.15011023631378
+            ]
+        ],
+        "coordinatesMultiLineString": null
+    },
+    "name": "Laghet - Prati di Gaggia",
+    "area": {
+        "$oid": "5f9e70ce068dca5082b92efe"
+    },
+    "primaryService": "aerialway_gondola"
+}
+{
+    "_id": {
+        "$oid": "5fc901e28ac947642fa270e8"
+    },
+    "geoLocation": {
+        "coordinatesLineStringText": "[[11.052590936271631,46.175343322073374],[11.049476305568522,46.163883272578715]]",
+        "coordinatesPoint": null,
+        "coordinatesLineString": [
+            [
+                11.052590936271631,
+                46.175343322073374
+            ],
+            [
+                11.049476305568522,
+                46.163883272578715
+            ]
+        ],
+        "coordinatesMultiLineString": null
+    },
+    "name": "Santel - Meriz",
+    "area": {
+        "$oid": "5f9e70ce068dca5082b92efe"
+    },
+    "primaryService": "aerialway_chair_lift"
+}
+{
+    "_id": {
+        "$oid": "5fc902b58ac947642fa270ea"
+    },
+    "geoLocation": {
+        "coordinatesLineStringText": "[[11.05050158583449,46.16474066187922],[11.037782293300863,46.150071854917535]]",
+        "coordinatesPoint": null,
+        "coordinatesLineString": [
+            [
+                11.05050158583449,
+                46.16474066187922
+            ],
+            [
+                11.037782293300863,
+                46.150071854917535
+            ]
+        ],
+        "coordinatesMultiLineString": null
+    },
+    "name": "Meriz - Selletta",
+    "area": {
+        "$oid": "5f9e70ce068dca5082b92efe"
+    },
+    "primaryService": "aerialway_chair_lift"
+}
+{
+    "_id": {
+        "$oid": "5fc904968ac947642fa270ec"
+    },
+    "geoLocation": {
+        "coordinatesLineStringText": "[[11.037529256623158,46.14903631338393],[11.037695069883695,46.143913483823845]]",
+        "coordinatesPoint": null,
+        "coordinatesLineString": [
+            [
+                11.037529256623158,
+                46.14903631338393
+            ],
+            [
+                11.037695069883695,
+                46.143913483823845
+            ]
+        ],
+        "coordinatesMultiLineString": null
+    },
+    "name": "Selletta - Cima Paganella",
+    "area": {
+        "$oid": "5f9e70ce068dca5082b92efe"
+    },
+    "primaryService": "aerialway_chair_lift"
+}
+{
+    "_id": {
+        "$oid": "5fc9070b8ac947642fa270ee"
+    },
+    "geoLocation": {
+        "coordinatesLineStringText": "[[10.961718079890776,46.152303068300135],[10.95514939808122,46.15626034906387]]",
+        "coordinatesPoint": null,
+        "coordinatesLineString": [
+            [
+                10.961718079890776,
+                46.152303068300135
+            ],
+            [
+                10.95514939808122,
+                46.15626034906387
+            ]
+        ],
+        "coordinatesMultiLineString": null
+    },
+    "name": "Pradel - Montanara",
+    "area": {
+        "$oid": "5f9e70ce068dca5082b92efe"
+    },
+    "primaryService": "aerialway_chair_lift"
+}
+{
+    "_id": {
+        "$oid": "5fc907658ac947642fa270ef"
+    },
+    "geoLocation": {
+        "coordinatesLineStringText": "[[10.965001599138308,46.14447072446243],[10.960522022368792,46.151580340285626]]",
+        "coordinatesPoint": null,
+        "coordinatesLineString": [
+            [
+                10.965001599138308,
+                46.14447072446243
+            ],
+            [
+                10.960522022368792,
+                46.151580340285626
+            ]
+        ],
+        "coordinatesMultiLineString": null
+    },
+    "name": "Molveno - Pradel",
+    "area": {
+        "$oid": "5f9e70ce068dca5082b92efe"
+    },
+    "primaryService": "aerialway_gondola"
+}
+{
+    "_id": {
+        "$oid": "606c1b30995cd914bfd535bd"
+    },
+    "geoLocation": {
+        "coordinatesMultiLineString": null,
+        "coordinatesLineString": [
+            [
+                10.997054375182277,
+                46.14974996197141
+            ],
+            [
+                11.015553216930853,
+                46.14076210825303
+            ]
+        ],
+        "coordinatesPoint": null,
+        "coordinatesLineStringText": "[[10.997054375182277,46.14974996197141],[11.015553216930853,46.14076210825303]]"
+    },
+    "name": "Gaggia - Paganella 2",
+    "area": {
+        "$oid": "5f9e70ce068dca5082b92efe"
+    },
+    "primaryService": "aerialway_chair_lift"
+}
