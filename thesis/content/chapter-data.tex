@@ -204,15 +204,15 @@ GPS data into a more structured and informative format, followed by the generati
 
 \begin{lstlisting}[language=Python]
 # Usage
-gpx_dir = "./data/gpx_train/"
-csv_dir = "./data/csv_train/"
+gpx_dir = "directory_path"
+csv_dir = "directory_path"
 convert_all_gpx_to_csv(gpx_dir, csv_dir)
 print("Converting is finished.")
 
 # Generating a report of the tracks 
 # that have at least one lift
 report_df = pd.DataFrame(report)
-report_df.to_csv("./data/report.csv", index=True)
+report_df.to_csv("directory_path_to_save_the_report", index=True)
 \end{lstlisting}
 
 
@@ -257,5 +257,5 @@ Based on the provided illustration in  \ref{fig:correlation}, it is evident that
 \label{sec:data:conclusion}
 
 To summarize, the main focus of this chapter was to process raw GPS data by loading it and transforming it into Pandas data frames. The data is then used for several calculations such as altitude, altitude difference, distance, cumulative distance, speed, lift detection, and lift path identification. The chapter also includes visualizing all the columns of the data frames and analyzing and data correlation. Finally, the variables with high correlation are selected as features to train ML models in
-\textbf{Chapter \ref{sec:model}}
+\textbf{Chapter \ref{sec:model}}.
 
