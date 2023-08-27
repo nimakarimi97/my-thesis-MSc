@@ -95,8 +95,9 @@ and 246,395 rows in the \texttt{combined\_data}.
 Again, the dependent variables and independent variable are extracted from the DataFrame.
 To avoid unnecessary duplication, the code for this part is not repeated, as it closely resembles the mentioned codes above.
 
-According to the Fig. \ref{fig:ols}, all the dependent variables are significant.
-
+According to the Fig. \ref{fig:ols}, 
+having a lower p-value than alpha, as a result,
+all the dependent variables are significant.
 \begin{figure}[htb]
 	\includegraphics[width=\textwidth]{resources/ols.png}
 	\caption{OLS Regression Results on the DataFrames}
@@ -194,17 +195,11 @@ print("Test set score: ", model_nn.score(X_test, y_test))
 
 \end{lstlisting}
 
-\section{Summary}
-
-This section has provided an overview of key machine learning modeling concepts like features, target variables, and training data. Introductory explanations of three major algorithms - logistic regression, random forests, and neural networks - were also presented. These descriptions aim to establish essential foundational knowledge before diving into modeling details and experiments in subsequent chapters.
-
-
-\section{model Section 1}
-\label{sec:model:sec1}
-
-
-
 \section{Conclusion}
 \label{sec:model:conclusion}
 
 
+
+This section has provided an overview of key machine learning modeling concepts like features, target variables, and training data. Introductory explanations of three major algorithms - logistic regression, 
+random forests, and neural networks - were also presented. 
+% These descriptions aim to establish essential foundational knowledge before diving into modeling details and experiments in subsequent chapters.
