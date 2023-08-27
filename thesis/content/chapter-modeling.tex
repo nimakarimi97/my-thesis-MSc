@@ -25,7 +25,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn import linear_model
 
-data = pd.read_csv("./data/csv/paganella-bike-park.csv")
+data = pd.read_csv("path_to_csv")
 \end{lstlisting}
 
 A brief look at the data set:
@@ -67,7 +67,41 @@ print("x_test shape:", X_test.shape)
 \end{lstlisting}
 
 
+Taking into account the dependency of relying only on a particular CSV file, it becomes apparent that the integration of all the diverse DataFrames produced in Chapter \ref{sec:data-csv} would result in a more comprehensive model training and validation process.
 
+\begin{lstlisting}[language=Python]
+# Load data from multiple CSV files
+csv_dir = 'csv_folder'
+file_path = os.listdir(csv_dir)
+
+data_frames = [pd.read_csv(f'./data/csv_train/{file}')
+                for file in file_path]
+combined_data = pd.concat(data_frames, ignore_index=False)
+
+df = combined_data[combined_data['speed'] == np.inf]
+combined_data.describe()
+\end{lstlisting}
+
+The output of the the above code would be the Fig. \ref{fig:df_describe}.
+
+\begin{figure}[htb]
+	\includegraphics[width=\textwidth]{resources/df_describe.png}
+	\caption{The details of all the DataFrames concated together}
+	\label{fig:df_describe}
+\end{figure}
+
+It can be seen in Fig. \ref{fig:df_describe} that there are 11 columns 
+and 246,395 rows in the \texttt{combined\_data}.
+Again, the dependent variables and independent variable are extracted from the DataFrame.
+To avoid unnecessary duplication, the code for this part is not repeated, as it closely resembles the mentioned codes above.
+
+According to the Fig. \ref{fig:ols}, all the dependent variables are significant.
+
+\begin{figure}[htb]
+	\includegraphics[width=\textwidth]{resources/ols.png}
+	\caption{OLS Regression Results on the DataFrames}
+	\label{fig:ols}
+\end{figure}
 
 \section{Approaches used}
 
@@ -80,11 +114,12 @@ Regression coefficients are learned during training to associate each feature wi
 
 
 \begin{lstlisting}[language=Python]
-	from sklearn import linear_model
-	
-	model_lr = linear_model.LogisticRegression(
-	multi_class="multinomial", solver="lbfgs", max_iter=120, verbose=True)
-	model_lr.fit(X_train, y_train)
+from sklearn.linear_model import LogisticRegression
+
+
+model_lr = linear_model.LogisticRegression(
+multi_class="multinomial", solver="lbfgs", max_iter=120, verbose=True)
+model_lr.fit(X_train, y_train)
 	
 \end{lstlisting}
 
@@ -95,11 +130,69 @@ Random forest is an ensemble method that trains multiple decision trees on subse
 
 Tuning key hyperparameters like number of trees, maximum depth, and minimum samples per leaf can improve random forest performance. Feature importance scores can be calculated to understand impact on predictions. Random forests are accurate and robust to noise, but lose interpretability compared to simpler models. They can be prone to overfitting with noisy or complex data.
 
+
+
+\begin{lstlisting}[language=Python]
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+
+
+# Initialize and train the Random Forest model
+model_rf = RandomForestClassifier(n_estimators=100, random_state=42)
+model_rf.fit(X_train, y_train)
+
+# Make predictions on the testing set
+y_pred = model_rf.predict(X_test)
+
+# Evaluate the model"s performance
+accuracy = accuracy_score(y_test, y_pred)
+print("Accuracy:", accuracy)
+\end{lstlisting}
+
+
+
+\subsection{Cross validation}
+\begin{lstlisting}[language=Python]
+from sklearn.model_selection import cross_val_score
+
+# Create a Random Forest classifier
+model_rf = RandomForestClassifier(n_estimators=100, random_state=42)
+
+# Perform cross-validation with 5 folds
+cross_val_scores = cross_val_score(model_rf, X, y, cv=5, scoring="accuracy")
+
+# Print the cross-validation scores
+print("Cross-validation Scores:", cross_val_scores)
+print("Mean Accuracy:", cross_val_scores.mean())
+
+\end{lstlisting}
+
+
 \subsection{Neural Networks}
 
 Artificial neural networks are computing systems inspired by animal brains. They contain interconnected nodes called neurons arranged in layers. Input features are fed into input neurons, transformed through hidden layers of neurons via weighted connections, and output from output neurons. Neural nets learn by adjusting connection weights during training to minimize prediction error \cite{picton1994neural}.
 
 Deep neural networks contain more hidden layers enabling modeling of complex nonlinear relationships in data. Key considerations include network topology and hyperparameter selection. Neural networks can model complex interactions between features that other models may miss. However, they require substantial data for training and are difficult to interpret compared to other techniques.
+
+
+\begin{lstlisting}[language=Python]
+from sklearn.neural_network import MLPClassifier
+
+# Create neural network model
+model_nn = MLPClassifier(hidden_layer_sizes=(
+	6,), activation="relu", solver="adam", random_state=1)
+
+# Perform 5-fold cross validation
+scores = cross_val_score(model_nn, X, y, cv=5)
+print("Cross-validation scores: ", scores)
+
+# Train model on training set
+model_nn.fit(X_train, y_train)
+
+# Evaluate model performance on test set
+print("Test set score: ", model_nn.score(X_test, y_test))
+
+\end{lstlisting}
 
 \section{Summary}
 
@@ -108,15 +201,6 @@ This section has provided an overview of key machine learning modeling concepts 
 
 \section{model Section 1}
 \label{sec:model:sec1}
-
-
-
-\section{model Section 2}
-\label{sec:model:sec2}
-
-
-\section{model Section 3}
-\label{sec:model:sec3}
 
 
 
