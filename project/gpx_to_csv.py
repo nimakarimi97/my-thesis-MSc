@@ -7,7 +7,7 @@ import os
 import gpxpy
 import pandas as pd
 from tqdm import tqdm
-
+import json
 report = []
 
 
@@ -32,6 +32,22 @@ def lift_checker(df):
             df.loc[i-1:i, 'lift_path'] = 1
 
     return number_of_lifts
+
+# def lift_checker(df):
+#     with open('lift_dataset.json', 'r') as f:
+#         lifts = json.load(f)
+#     number_of_lifts = 0
+#     df['lift?'] = 0  # ? set the "lift?" column to zero
+#     df['lift_path'] = 0
+
+#     for i in range(len(df)):
+#         for lift in lifts:
+#             lift_location = lift["geoLocation"]["coordinatesLineString"]
+#             if df[' latitude '][i] == lift_location[0] and df[' longitude '][i] == lift_location[1]:
+#                 number_of_lifts += 1
+#                 df.loc[i, 'lift?'] = 1
+#                 df.loc[i-1:i, 'lift_path'] = 1
+#     return number_of_lifts
 
 
 def gpx_to_csv(gpx_file_path, csv_file_path):
