@@ -78,7 +78,6 @@ data_frames = [pd.read_csv(f'./data/csv_train/{file}')
                 for file in file_path]
 combined_data = pd.concat(data_frames, ignore_index=False)
 
-df = combined_data[combined_data['speed'] == np.inf]
 combined_data.describe()
 \end{lstlisting}
 
@@ -95,15 +94,6 @@ and 246,395 rows in the \texttt{combined\_data}.
 Again, the dependent variables and independent variable are extracted from the DataFrame.
 To avoid unnecessary duplication, the code for this part is not repeated, as it closely resembles the mentioned codes above.
 
-According to the Fig. \ref{fig:ols}, 
-having a lower p-value than alpha, as a result,
-all the dependent variables are significant.
-\begin{figure}[htb]
-	\includegraphics[width=\textwidth]{resources/ols.png}
-	\caption{OLS Regression Results on the DataFrames}
-	\label{fig:ols}
-\end{figure}
-
 \section{Approaches used}
 
 As the project is classification \cite{osisanwo2017supervised}, the following approaches are used.
@@ -113,15 +103,41 @@ Logistic regression is a common statistical technique adapted for machine learni
 
 Regression coefficients are learned during training to associate each feature with the log odds of the target. Important considerations when training logistic regressions include handling class imbalance and avoiding overfitting. Regularization methods like L1 and L2 can help prevent overfitting. Logistic regression is easy to implement, fast to train, and interpretable, but may not achieve best-in-class accuracy.
 
+Before defining the model, it is beneficial to have a look at the p-values and significance of the independent variables, as this can greatly benefit the analysis.
 
 \begin{lstlisting}[language=Python]
-from sklearn.linear_model import LogisticRegression
+import statsmodels.api as sm
 
+# Fit the logistic regression model using statsmodels
+model = sm.Logit(y, X)
+result = model.fit()
+
+# Print summary including p-values
+print(result.summary())
+\end{lstlisting}
+\begin{figure}[ht]
+	\includegraphics[width=\textwidth]{resources/pvalue.png}
+	\caption{Logistic Regression Results on the DataFrames}
+	\label{fig:pvalue}
+\end{figure}
+
+
+
+By running the above code block, the Fig. \ref{fig:pvalue} is generated. In more detail, here are the important points of the output:
+
+\begin{itemize}
+	\item Model: Logit - Indicates logistic regression was used. This is a classification model that predicts a binary target variable, which is Dep Variable: lift?.
+	
+	\item P>|z| - The p-values for each coefficient. Very low p-values for all variables, indicating they are statistically significant predictors.	
+\end{itemize}
+
+Here is how the Logistic Regression model is trained:
+\begin{lstlisting}[language=Python]
+from sklearn.linear_model import LogisticRegression
 
 model_lr = linear_model.LogisticRegression(
 multi_class="multinomial", solver="lbfgs", max_iter=120, verbose=True)
 model_lr.fit(X_train, y_train)
-	
 \end{lstlisting}
 
 
@@ -153,6 +169,14 @@ print("Accuracy:", accuracy)
 
 
 \subsection{Cross validation}
+Due to lack of data quantity, this approach is used to enhance the model 
+accuracy. Moreover, it is highly recommended to utilize cross validation to
+mitigate overfitting.
+
+
+
+
+
 \begin{lstlisting}[language=Python]
 from sklearn.model_selection import cross_val_score
 
