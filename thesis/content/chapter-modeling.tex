@@ -135,9 +135,21 @@ Here is how the Logistic Regression model is trained:
 \begin{lstlisting}[language=Python]
 from sklearn.linear_model import LogisticRegression
 
+# Initialize the logistic regression model
+
 model_lr = linear_model.LogisticRegression(
 multi_class="multinomial", solver="lbfgs", max_iter=120, verbose=True)
+
+# Train the model
 model_lr.fit(X_train, y_train)
+
+# Make predictions on the testing set
+y_pred = model_rf.predict(X_test)
+
+# Evaluate the model"s performance
+accuracy = accuracy_score(y_test, y_pred)
+print("Accuracy:", accuracy)
+# Accuracy:  1.0
 \end{lstlisting}
 
 
@@ -156,6 +168,8 @@ from sklearn.metrics import accuracy_score
 
 # Initialize and train the Random Forest model
 model_rf = RandomForestClassifier(n_estimators=100, random_state=42)
+
+# Train the model
 model_rf.fit(X_train, y_train)
 
 # Make predictions on the testing set
@@ -164,33 +178,9 @@ y_pred = model_rf.predict(X_test)
 # Evaluate the model"s performance
 accuracy = accuracy_score(y_test, y_pred)
 print("Accuracy:", accuracy)
+# Accuracy: 1.0
 \end{lstlisting}
 
-
-
-\subsection{Cross validation}
-Due to lack of data quantity, this approach is used to enhance the model 
-accuracy. Moreover, it is highly recommended to utilize cross validation to
-mitigate overfitting.
-
-
-
-
-
-\begin{lstlisting}[language=Python]
-from sklearn.model_selection import cross_val_score
-
-# Create a Random Forest classifier
-model_rf = RandomForestClassifier(n_estimators=100, random_state=42)
-
-# Perform cross-validation with 5 folds
-cross_val_scores = cross_val_score(model_rf, X, y, cv=5, scoring="accuracy")
-
-# Print the cross-validation scores
-print("Cross-validation Scores:", cross_val_scores)
-print("Mean Accuracy:", cross_val_scores.mean())
-
-\end{lstlisting}
 
 
 \subsection{Neural Networks}
@@ -199,17 +189,72 @@ Artificial neural networks are computing systems inspired by animal brains. They
 
 Deep neural networks contain more hidden layers enabling modeling of complex nonlinear relationships in data. Key considerations include network topology and hyperparameter selection. Neural networks can model complex interactions between features that other models may miss. However, they require substantial data for training and are difficult to interpret compared to other techniques.
 
-
 \begin{lstlisting}[language=Python]
 from sklearn.neural_network import MLPClassifier
 
+# Create and train neural network model
+# MLP: Multilayer Perceptron
+model_nn = MLPClassifier(hidden_layer_sizes=(10,), max_iter=1000, activation="relu", solver="lbfgs", random_state=42)
+
+# Train the model
+model_nn.fit(X_train, y_train)
+
+
+# Make predictions
+y_pred = model.predict(X_test)
+
+# Calculate accuracy
+accuracy = accuracy_score(y_test, y_pred)
+print("Accuracy:", accuracy) # Accuracy: 0.9624992390267659
+\end{lstlisting}
+
+
+\section{Cross Validation}
+As elaborated upon in section \ref{sec:cv}, the significance of the validation process becomes evident. Cross validation, an indispensable technique in machine learning, contributes to a more robust estimate of model performance when contrasted with a single train-test split.
+By dividing data into multiple folds and iterating through training on each fold while validating the remaining data, cross validation reduces variability in performance estimates and leverages all available data for both training and validation. Unlike a single validation set, cross validation minimizes the impact of a particular data split on the performance estimate. 
+Moreover, it is highly recommended to utilize cross validation to
+mitigate overfitting by never directly training or validating the full dataset at once. 
+In conclusion, cross validation improves model evaluation, selection, and hyperparameter tuning by providing more reliable, stable estimates of model generalization through multiple rotations of training and validation data. It reduces the high variance of a single validation estimate, leverages all data for both training and validation and minimizes overfitting due to repeatedly validated on partial datasets.
+
+
+
+
+
+\subsubsection{Logistic Regression}
+\begin{lstlisting}[language=Python]
+from sklearn.model_selection import cross_val_score
+
+# Perform cross validation with 5 folds
+cross_val_scores = cross_val_score(model_lr, X, y, cv=5, scoring="accuracy")
+
+# Print the cross validation scores
+print("Cross validation Scores:", cross_val_scores)
+print("Mean Accuracy:", cross_val_scores.mean())
+# Cross validation Scores: [1, 1, 0.99997971, 1, 1]
+# Mean Accuracy: 0.9999959414760852
+\end{lstlisting}
+
+\subsubsection{Random Forest}
+\begin{lstlisting}[language=Python]
+# Perform cross validation with 5 folds
+cross_val_scores = cross_val_score(model_rf, X, y, cv=5, scoring="accuracy")
+
+# Print the cross validation scores
+print("Cross validation Scores:", cross_val_scores)
+print("Mean Accuracy:", cross_val_scores.mean())
+# Cross validation Scores: [1, 1, 1, 1, 1]
+# Mean Accuracy: 1.0
+\end{lstlisting}
+
+\subsubsection{Neural Networks}
+\begin{lstlisting}[language=Python]
 # Create neural network model
 model_nn = MLPClassifier(hidden_layer_sizes=(
 	6,), activation="relu", solver="adam", random_state=1)
 
 # Perform 5-fold cross validation
 scores = cross_val_score(model_nn, X, y, cv=5)
-print("Cross-validation scores: ", scores)
+print("Cross validation scores: ", scores)
 
 # Train model on training set
 model_nn.fit(X_train, y_train)
@@ -217,7 +262,10 @@ model_nn.fit(X_train, y_train)
 # Evaluate model performance on test set
 print("Test set score: ", model_nn.score(X_test, y_test))
 
+# Cross validation scores:  [0.96960166 0.95012074 0.99782869 0.98938696 0.92516082]
+# Test set score:  0.9624992390267659
 \end{lstlisting}
+	
 
 \section{Conclusion}
 \label{sec:model:conclusion}
@@ -226,4 +274,4 @@ print("Test set score: ", model_nn.score(X_test, y_test))
 
 This section has provided an overview of key machine learning modeling concepts like features, target variables, and training data. Introductory explanations of three major algorithms - logistic regression, 
 random forests, and neural networks - were also presented. 
-% These descriptions aim to establish essential foundational knowledge before diving into modeling details and experiments in subsequent chapters.
+These descriptions aim to establish essential foundational knowledge before diving into results presented in the next chapter \ref{sec:results}.
