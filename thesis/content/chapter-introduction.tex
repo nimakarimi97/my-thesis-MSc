@@ -50,7 +50,7 @@ The procedure of constructing models from data using machine learning algorithms
 
 A wide range of machine-learning algorithms has been developed to address the diverse data and problem types in various machine-learning scenarios ~\cite{hastie2009elements, murphy2012machine}. These algorithms can be understood as exploring a vast space of potential programs, guided by training experience, to discover the most optimal performance. Variation among these algorithms arises from their methods of representing candidate programs, such as decision trees or mathematical functions, and their strategies for navigating this program space, including optimization techniques and evolutionary search methods~\cite{jordan2015machine}.
 
-\subsection{Different Machine Learning algorithms}
+\subsection{Different Machine Learning Algorithms}
 Machine learning encompasses a wide range of learning types and algorithms. The major categories are supervised learning, unsupervised learning, semi-supervised learning, and reinforcement learning \cite{Alpaydin14}.
 
 Supervised learning algorithms are trained on labeled data, which includes inputs and desired outputs. Common supervised tasks are classification, predicting categorical outputs like spam or not spam,
@@ -74,16 +74,17 @@ In supervised machine learning, an issue called overfitting arises, leading to p
 Occam's Razor, or the principle of parsimony, advocates using models that contain only what's necessary for effective modeling. Overfitting occurs when models or procedures include more terms than needed, violating parsimony. Two types of overfitting are identified: using excessively flexible models and incorporating irrelevant components. Overfitting is undesirable due to resource wastage, potential prediction errors, worse decisions in feature selection, degraded predictions, and reduced portability of models. Portable models, adhering to Occam's Razor, are preferred for their broader applicability and reproducibility across locations~\cite{hawkins2004of,cook2016overfitting}.
 
 
-\subsection{Spliting the dataset}
+\subsection{Spliting the Dataset}
 
 In both statistical and machine learning model development, a common practice is to divide the dataset into two parts: training and testing ~\cite{hastie2009elements}. The training set is utilized to estimate the model's unknown parameters, while the model's accuracy is assessed using the testing dataset. This division is essential to prevent overfitting, where a model becomes too tailored to the data, potentially leading to poor predictions in new situations. By reserving a subset of the data for testing, the model's performance can be evaluated before actual deployment, safeguarding against issues arising from overfitting.
 
 The simplest and probably the most common strategy to split such a dataset is to randomly sample a fraction of the dataset. For example, 80\% of the rows of the dataset can be randomly chosen for training, and the remaining 20\% can be used for testing. Various strategies are showcased in ~\cite{roshan2022split} for efficiently and optimally dividing the dataset.
 
 \subsection{Validation}
+\label{sec:cv}
 Furthermore, it's a frequent practice to reserve a segment of the training set for validation. This validation subset serves purposes such as refining model performance through hyper-parameter or regularization parameter selection (e.g. the number of hidden units—layers and layer widths—in a neural network~\cite{ripley2007pattern}). Validation datasets also can be used for regularization by early stopping (stopping training when the error on the validation data set increases, as this is a sign of over-fitting to the training data set)~\cite{Prechelt2012}.
 
-To ensure greater result stability and maximize the use of valuable data for training, datasets can be repeatedly divided into multiple training and validation subsets. This practice, referred to as cross validation, is employed. Additionally, an independent test dataset held apart from cross-validation is typically utilized to validate the model's performance.~\cite{browne2000cv} provides an overview of various cross-validation techniques.
+To ensure greater result stability and maximize the use of valuable data for training, datasets can be repeatedly divided into multiple training and validation subsets. This practice, referred to as cross validation, is employed. Additionally, an independent test dataset held apart from cross validation is typically utilized to validate the model's performance.~\cite{browne2000cv} provides an overview of various cross validation techniques.
 
 \section{Thesis Structure}
 \label{sec:intro:structure}
