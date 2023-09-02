@@ -2,7 +2,7 @@
 
 > A Clean LaTeX Style for Thesis Documents
 
-This repository contains my master's thesis titled "Sustaibale Mobility" along with the code and scripts used in my research project.
+This repository contains my master's thesis titled "Analyzing Bike Tracks Using Artificial Intelligence Algorithms" along with the code and scripts used in my research project.
 
 ## Thesis
 
