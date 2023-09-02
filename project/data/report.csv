@@ -1,22 +1,22 @@
-   ,file                                                                   ,n ,sum_of_n
- 0 ,train/t3t.csv                                                          ,1 ,     1.0
- 1 ,train/mezzana-712.csv                                                  ,3 ,     2.0
- 2 ,train/bear-trail.csv                                                   ,6 ,     6.0
- 3 ,train/tonale-rifugio-bozzi-forcella-montozzo.csv                       ,1 ,     1.0
- 4 ,train/passo-cercena.csv                                                ,2 ,     2.0
- 5 ,train/dimaro-madonna-di-campiglio-rifugio-dellorso-dimaro.csv          ,3 ,     3.0
- 6 ,train/molveno-rif-croz-altissimo-giro-lago.csv                         ,1 ,     1.0
- 7 ,train/bear-trails-ultimate-enduro-experience.csv                       ,6 ,     6.0
- 8 ,train/molveno-bear-trails-completo.csv                                 ,1 ,     1.0
- 9 ,train/pegra-easy-ryder-pegra-flow-trail-bike-park-tonale-tour-dei-.csv ,4 ,     4.0
-10 ,train/daolasa-lago-tovel-monte-peller-daolasa.csv                      ,3 ,     2.5
-11 ,train/marilleva-900-san-lorenzo-in-banale.csv                          ,3 ,     3.0
-12 ,train/dimaro-daolasa-marilleva-campiglio.csv                           ,4 ,     3.0
-13 ,train/dimaro-tonale.csv                                                ,1 ,     1.0
-14 ,train/bear-trail-paganella.csv                                         ,1 ,     1.0
-15 ,train/downhill-daolasa-folgarida-dimaro-soft.csv                       ,1 ,     1.0
-16 ,train/molveno.csv                                                      ,1 ,     1.0
-17 ,train/lake-to-lake.csv                                                 ,5 ,     5.0
-18 ,train/paganella-bike-enduro-t2t.csv                                    ,4 ,     4.0
-19 ,train/paganella-bike-park.csv                                          ,5 ,     5.0
-20 ,train/terzolas-madonna-di-campiglio-patascoss.csv                      ,4 ,     4.0
+,file,n,sum_of_n
+0,train/t3t.csv,1,1.0
+1,train/mezzana-712.csv,3,2.0
+2,train/bear-trail.csv,6,6.0
+3,train/tonale-rifugio-bozzi-forcella-montozzo.csv,1,1.0
+4,train/passo-cercena.csv,2,2.0
+5,train/dimaro-madonna-di-campiglio-rifugio-dellorso-dimaro.csv,3,3.0
+6,train/molveno-rif-croz-altissimo-giro-lago.csv,1,1.0
+7,train/bear-trails-ultimate-enduro-experience.csv,6,6.0
+8,train/molveno-bear-trails-completo.csv,1,1.0
+9,train/pegra-easy-ryder-pegra-flow-trail-bike-park-tonale-tour-dei-.csv,4,4.0
+10,train/daolasa-lago-tovel-monte-peller-daolasa.csv,3,2.5
+11,train/marilleva-900-san-lorenzo-in-banale.csv,3,3.0
+12,train/dimaro-daolasa-marilleva-campiglio.csv,4,3.0
+13,train/dimaro-tonale.csv,1,1.0
+14,train/bear-trail-paganella.csv,1,1.0
+15,train/downhill-daolasa-folgarida-dimaro-soft.csv,1,1.0
+16,train/molveno.csv,1,1.0
+17,train/lake-to-lake.csv,5,5.0
+18,train/paganella-bike-enduro-t2t.csv,4,4.0
+19,train/paganella-bike-park.csv,5,5.0
+20,train/terzolas-madonna-di-campiglio-patascoss.csv,4,4.0
